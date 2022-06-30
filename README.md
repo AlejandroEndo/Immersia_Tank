@@ -14,9 +14,9 @@ alguna manera al nivel del usuario.
 
 ### TO DO
 
-[ ] Point and click movement.
-[ ] Aim system.
-[ ] Shooting system with "charge" force.
-[ ] Enemy Movement.
-[ ] Enemy Shooting system.
-[ ] Difficulty Adjustment.
+- [ ] Point and click movement.
+- [ ] Aim system.
+- [ ] Shooting system with "charge" force.
+- [ ] Enemy Movement.
+- [ ] Enemy Shooting system.
+- [ ] Difficulty Adjustment.
