@@ -14,7 +14,7 @@ public class Loading : IState {
 
     public void OnEnter() {
         _operations.Add(SceneManager.LoadSceneAsync("Scenes/Main"));
-        // _operations.Add(SceneManager.LoadSceneAsync("Scenes/UI", LoadSceneMode.Additive));
+        _operations.Add(SceneManager.LoadSceneAsync("Scenes/UI", LoadSceneMode.Additive));
     }
 
     public void OnExit() {

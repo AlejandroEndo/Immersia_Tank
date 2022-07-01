@@ -7,6 +7,7 @@ public class Resume : IState {
     }
 
     public void OnEnter() {
+        UIController.SelectedUIButton = SelectedUIButton.None;
         Active = true;
         Time.timeScale = 0f;
     }

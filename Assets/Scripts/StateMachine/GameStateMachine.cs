@@ -1,13 +1,6 @@
 ﻿using System;
 using UnityEngine;
 
-public enum Difficulty {
-    None,
-    Easy,
-    Medium,
-    Hard,
-}
-
 public class GameStateMachine : MonoBehaviour {
     public static event Action<IState> OnGameStateChanged;
     private static GameStateMachine _instance;
@@ -41,11 +34,10 @@ public class GameStateMachine : MonoBehaviour {
         _stateMachine.AddTransition(menu, loading, CheckForDifficulty);
         _stateMachine.AddTransition(loading, play, loading.Finish);
         _stateMachine.AddTransition(play, pause, () => Input.GetKeyDown(KeyCode.P));
-        _stateMachine.AddTransition(pause, play, () => Input.GetKeyDown(KeyCode.P));
-        _stateMachine.AddTransition(pause, menu, () => GoToMenuButton.Pressed);
+        _stateMachine.AddTransition(pause, play, UnPauseCheck);
+        _stateMachine.AddTransition(pause, menu, () => UIController.SelectedUIButton == SelectedUIButton.GoToMenu);
         _stateMachine.AddTransition(play, resume, () => Input.GetKeyDown(KeyCode.F));
-        _stateMachine.AddTransition(resume, menu, () => GoToMenuButton.Pressed);
-        _stateMachine.AddTransition(resume, play, () => ReplayButton.Pressed);
+        _stateMachine.AddTransition(resume, menu, () => UIController.SelectedUIButton == SelectedUIButton.GoToMenu);
     }
 
     private bool CheckForDifficulty() {
@@ -56,6 +48,9 @@ public class GameStateMachine : MonoBehaviour {
 
         return false;
     }
+
+    private bool UnPauseCheck() =>
+        UIController.SelectedUIButton == SelectedUIButton.Continue || Input.GetKeyDown(KeyCode.P);
 
     private void Update() {
         _stateMachine.Tick();
