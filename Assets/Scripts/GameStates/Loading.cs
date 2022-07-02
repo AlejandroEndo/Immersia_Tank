@@ -13,7 +13,7 @@ public class Loading : IState {
     }
 
     public void OnEnter() {
-        _operations.Add(SceneManager.LoadSceneAsync("Scenes/Main"));
+        _operations.Add(SceneManager.LoadSceneAsync("Scenes/TankBattle"));
         _operations.Add(SceneManager.LoadSceneAsync("Scenes/UI", LoadSceneMode.Additive));
     }
 

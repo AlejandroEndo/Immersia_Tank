@@ -5,7 +5,7 @@ public class Menu : IState {
     }
 
     public void OnEnter() {
-        UIPlayButton.SelectedDifficulty = Difficulty.None;
+        UIPlayButton.SelectedGameMode = GameMode.None;
         SceneManager.LoadSceneAsync("Menu");
     }
 

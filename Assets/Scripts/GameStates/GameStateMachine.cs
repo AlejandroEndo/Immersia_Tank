@@ -3,22 +3,26 @@ using UnityEngine;
 
 public class GameStateMachine : MonoBehaviour {
     public static event Action<IState> OnGameStateChanged;
-    private static GameStateMachine _instance;
+    public static GameStateMachine Instance { get; private set; }
 
     private StateMachine _stateMachine;
 
     public Type CurrentStateType => _stateMachine.CurrentState.GetType();
 
-    public Difficulty Difficulty { get; private set; }
+    public GameMode GameMode { get; private set; }
 
     private void Awake() {
-        if (_instance != null) { // Private singleton
+        #region SINGLETON
+
+        if (Instance != null) {
             Destroy(gameObject);
             return;
         }
 
-        _instance = this;
-        DontDestroyOnLoad(gameObject); // This GameObject manage all the game flow.
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        #endregion
 
         _stateMachine = new StateMachine();
 
@@ -36,13 +40,13 @@ public class GameStateMachine : MonoBehaviour {
         _stateMachine.AddTransition(play, pause, () => Input.GetKeyDown(KeyCode.P));
         _stateMachine.AddTransition(pause, play, UnPauseCheck);
         _stateMachine.AddTransition(pause, menu, () => UIController.SelectedUIButton == SelectedUIButton.GoToMenu);
-        _stateMachine.AddTransition(play, resume, () => Input.GetKeyDown(KeyCode.F));
+        //_stateMachine.AddTransition(play, resume, () => Input.GetKeyDown(KeyCode.F));
         _stateMachine.AddTransition(resume, menu, () => UIController.SelectedUIButton == SelectedUIButton.GoToMenu);
     }
 
     private bool CheckForDifficulty() {
-        if (UIPlayButton.SelectedDifficulty != Difficulty.None) {
-            Difficulty = UIPlayButton.SelectedDifficulty;
+        if (UIPlayButton.SelectedGameMode != GameMode.None) {
+            GameMode = UIPlayButton.SelectedGameMode;
             return true;
         }
 
