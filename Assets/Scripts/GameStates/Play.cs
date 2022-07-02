@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 
 public class Play : IState {
-    private IPlayer _playerOne;
-    private IPlayer _playerTwo;
+    private ITank _tankOne;
+    private ITank _tankTwo;
 
     private SpawnPoint[] _spawnPoints;
 

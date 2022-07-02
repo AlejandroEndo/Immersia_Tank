@@ -3,16 +3,14 @@ using UnityEngine.AI;
 
 public class Moving : IState {
     private NavMeshAgent _navMeshAgent;
-    private Tank _tank;
-    private MovementRange _movementRange;
+    private ITank _tank;
 
     private bool _canMove;
 
     private Vector3 _previousPos;
 
-    public Moving(NavMeshAgent navMeshAgent, MovementRange movementRange, Tank tank) {
+    public Moving(NavMeshAgent navMeshAgent, ITank tank) {
         _navMeshAgent = navMeshAgent;
-        _movementRange = movementRange;
         _tank = tank;
     }
 
@@ -21,7 +19,7 @@ public class Moving : IState {
             _tank.UseFuel(Vector3.Distance(_previousPos, _tank.transform.position));
         }
 
-        if (!_canMove && _navMeshAgent.remainingDistance < 0.01f) {
+        if (!_canMove && _navMeshAgent.remainingDistance < 0.025f) {
             ActivateMovement();
         }
 
@@ -35,13 +33,13 @@ public class Moving : IState {
 
     private void ActivateMovement() {
         _canMove = true;
-        _movementRange.gameObject.SetActive(true);
-        Pointer.ActivatePointer(_tank.transform);
+        _tank.SetMovementRangeDisplay(true);
+        Pointer.ActivatePointer(_tank);
     }
 
     private void DeactivateMovement() {
         _canMove = false;
-        _movementRange.gameObject.SetActive(false);
+        _tank.SetMovementRangeDisplay(false);
         Pointer.DeactivatePointer();
     }
 

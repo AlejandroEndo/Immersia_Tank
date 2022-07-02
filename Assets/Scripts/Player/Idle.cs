@@ -1,15 +1,17 @@
-﻿public class Idle : IState {
-    private MovementRange _movementRange;
+﻿using UnityEngine.AI;
 
-    public Idle(MovementRange movementRange) {
-        _movementRange = movementRange;
+public class Idle : IState {
+    private ITank _tank;
+
+    public Idle(ITank tank) {
+        _tank = tank;
     }
 
     public void Tick() {
     }
 
     public void OnEnter() {
-        _movementRange.gameObject.SetActive(false);
+        _tank.SetMovementRangeDisplay(false);
     }
 
     public void OnExit() {

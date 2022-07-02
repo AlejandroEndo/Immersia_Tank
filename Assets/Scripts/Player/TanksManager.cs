@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -19,6 +20,8 @@ public class TanksManager : MonoBehaviour {
     public static TanksManager Instance { get; private set; }
     public TankType TankInTurn { get; private set; } = TankType.Second;
 
+    private NavMeshSurface _navMeshSurface;
+
     private void Awake() {
         if (Instance != null) {
             Destroy(gameObject);
@@ -26,6 +29,8 @@ public class TanksManager : MonoBehaviour {
         }
 
         Instance = this;
+
+        _navMeshSurface = GetComponent<NavMeshSurface>();
 
         bool randomPos = Random.Range(0f, 1f) >= 0.5f;
         _firstTank.transform.position = _spawnPoints[randomPos ? 0 : 1].transform.position;
