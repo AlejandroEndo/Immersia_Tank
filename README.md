@@ -20,3 +20,14 @@ alguna manera al nivel del usuario.
 - [ ] Enemy Movement.
 - [ ] Enemy Shooting system.
 - [ ] Difficulty Adjustment.
+
+### Complementary Info
+- There is a flat game world with obstacles placed on it.
+- The tanks start from two fixed locations.
+- One tank (computer) will move to a random position on the map.
+- The player will click a location and the other tank will go to the clicked location.
+- When both tanks are at their locations they will take turns firing at each other.
+- Player can control the elevation and shot power of the gun for each shot. The computer will control the other one.
+- The computer must iteratively find the correct elevation and power.
+- When a shell hits its target there will be an explosion and the winner displayed
+- All shells must be simulated not calculated 
