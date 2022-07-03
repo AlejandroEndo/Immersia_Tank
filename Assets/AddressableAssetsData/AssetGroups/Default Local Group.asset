@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 79ba2a34130b179448cb5111b30f01e5
+  m_SerializeEntries:
+  - m_GUID: 3051ec48cf94fbd459e5d4d63d5250c7
+    m_Address: Assets/Prefabs/TankPlayer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2894ef1dc5d07474ebc457d60e85734a
+    m_Address: Assets/Prefabs/TankIA.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d32b4c760f82f9441ae6682c8ef74475, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2053406320ec7984499894349454b38e, type: 2}
+    - {fileID: 11400000, guid: 9ff128285bf62dd4b81c409b34e1e722, type: 2}

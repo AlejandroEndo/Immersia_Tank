@@ -36,11 +36,11 @@ public class TankStateMachine : MonoBehaviour {
 
         _stateMachine.AddTransition(_idle, _moving, () => _isMyTurn);
         _stateMachine.AddTransition(_moving, _shooting, () => !_tank.HasFuel);
-        _stateMachine.AddTransition(_shooting, _idle, () => false);
+        _stateMachine.AddTransition(_shooting, _idle, () => !_isMyTurn);
     }
 
-    private void OnTurnChanged(TankType tankTurn) {
-        _isMyTurn = tankTurn == tankType;
+    private void OnTurnChanged(ITank tankTurn) {
+        _isMyTurn = tankTurn == _tank.GetComponent<ITank>();
     }
 
     private void Update() => _stateMachine.Tick();
